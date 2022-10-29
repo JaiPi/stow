@@ -1,0 +1,12 @@
+# Set default behavior to automatically normalize line endings.
+* text=auto
+
+# Windows files require CRLF
+*.[cC][mM][dD] text eol=crlf
+*.[bB][aA][tT] text eol=crlf
+
+# Shell scripts are LF only
+*.sh text eol=lf
+
+# Treat SVG files as normalized text instead of binary
+*.svg text
