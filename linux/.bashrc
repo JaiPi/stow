@@ -1,26 +1,10 @@
 # .bashrc
 
-if [ -d "$HOME/.bashrc.d/" ]; then
-    for file in "$HOME/.bashrc.d/*.bashrc"; do
-        source “$file”
-    done
-fi
-
 # If not running interactively, don't do anything
 case $- in
 *i*) ;;
 *) return ;;
 esac
-
-# don't put duplicate lines or lines starting with space in the history.
-HISTCONTROL=ignoreboth
-
-# append to the history file, don't overwrite it
-shopt -s histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE
-HISTSIZE=1000
-HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -96,6 +80,7 @@ xterm* | rxvt* | Eterm | aterm | kterm | gnome* | alacritty)
 
 esac
 
+# Add new line after command prompt
 [ "$NEWLINE_BEFORE_PROMPT" = yes ] && PROMPT_COMMAND="PROMPT_COMMAND=echo"
 
 # enable color support of ls, less and man, and also add handy aliases
@@ -154,3 +139,10 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 unset rc
+
+# Use .bashrc.d config files
+if [ -d "$HOME/.bashrc.d/" ]; then
+    for file in "$HOME/.bashrc.d/*.bashrc"; do
+        source “$file”
+    done
+fi
