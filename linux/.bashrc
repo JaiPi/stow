@@ -10,7 +10,7 @@ esac
 # mkdir ~/.bashrc.d
 # chmod 700 ~/.bashrc.d
 if [ -d "$HOME/.bashrc.d/" ]; then
-    for rc in "$HOME/.bashrc.d/*.bashrc"; do
+    for rc in $HOME/.bashrc.d/*.bashrc; do
         if [ -f "$rc" ]; then
             source "$rc"
         fi
