@@ -1,5 +1,11 @@
 # .bashrc
 
+if [ -d "$HOME/.bashrc.d/" ]; then
+    for file in "$HOME/.bashrc.d/*.bashrc"; do
+        source “$file”
+    done
+fi
+
 # If not running interactively, don't do anything
 case $- in
 *i*) ;;
