@@ -13,3 +13,6 @@ alias kb='kubectl'
 alias tf='terraform'
 alias tfp='terraform plan'
 alias tff='terraform fmt -recursive'
+
+# other alias
+alias hg='history | grep '
