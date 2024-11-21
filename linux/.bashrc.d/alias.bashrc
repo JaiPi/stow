@@ -11,8 +11,11 @@ alias kb='kubectl'
 
 # terraform alias
 alias tf='terraform'
-alias tfp='terraform plan'
-alias tff='terraform fmt -recursive'
+alias tfp='tf plan'
+alias tfa='tf apply'
+alias tff='tf fmt -recursive'
+alias tfd='terraform-docs.exe .'
 
 # other alias
+alias cl='clear'
 alias hg='history | grep '
