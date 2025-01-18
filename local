@@ -1,0 +1,8 @@
+total 0
+lrwxrwxrwx 1 alma alma 44 Nov 21 14:45 aws -> /mnt/c/Program Files/Amazon/AWSCLIV2/aws.exe
+lrwxrwxrwx 1 alma alma 60 Nov 21 15:01 awscredentials-opsmon-default -> /home/alma/aws-credentials/aws-credentials-opsmon-default.sh
+lrwxrwxrwx 1 alma alma 36 Nov 21 00:44 git -> /mnt/c/Program Files/Git/bin/git.exe
+lrwxrwxrwx 1 alma alma 45 Jan  7 01:19 krew -> /mnt/c/Users/jaime/.krew/bin/kubectl-krew.exe
+lrwxrwxrwx 1 alma alma 60 Jan  6 23:06 kubectl -> /mnt/c/Program Files/Docker/Docker/resources/bin/kubectl.exe
+-rw-r--r-- 1 alma alma  0 Jan 18 12:32 local
+lrwxrwxrwx 1 alma alma 53 Jan  2 19:05 minikube -> /mnt/c/Program Files/Kubernetes/Minikube/minikube.exe
