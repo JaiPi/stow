@@ -6,8 +6,9 @@ alias l='ls -CF'
 # git alias
 alias gs='git status'
 
-# kubernetes alias
-alias kb='kubectl'
+# kubectl alias
+alias kg='kubectl get'
+alias kds='kubectl describe'
 
 # terraform alias
 alias tf='terraform'
