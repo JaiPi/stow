@@ -11,5 +11,10 @@ if [ -f /usr/share/bash-completion/bash_completion ] || [ -f /etc/bash_completio
         source <(minikube completion bash)
     fi
 
+    # Enable helm completion if helm is installed
+    if command -v helm &> /dev/null; then
+        source <(helm completion bash)
+    fi
+
 fi
 
