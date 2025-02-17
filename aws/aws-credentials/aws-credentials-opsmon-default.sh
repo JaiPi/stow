@@ -82,7 +82,7 @@ check_credentials() {
 
 get_arn() {
   local keyword="$AWS_USER_PROFILE"
-  local FILEPATH="/home/alma/aws-credentials/aws-mfa-arns"
+  local FILEPATH="/home/jaipi/aws-credentials/aws-mfa-arns"
   local arn
 
   # Check if file exists
