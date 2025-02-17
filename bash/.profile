@@ -20,4 +20,4 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 # User specific environment and startup programs
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+#export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
