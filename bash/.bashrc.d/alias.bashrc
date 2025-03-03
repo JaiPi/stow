@@ -19,7 +19,7 @@ alias tfc='tf console'
 alias tff='tf fmt -recursive'
 alias tfw='tf workspace'
 alias tfs='tf state'
-alias tfd='terraform-docs.exe .'
+alias tfd='terraform-docs .'
 
 # other alias
 alias cl='clear'

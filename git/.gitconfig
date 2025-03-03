@@ -1,7 +1,9 @@
 [safe]
-	directory = *
+    directory = *
 [user]
-	name = JaiPi
-	email = 29052214+JaiPi@users.noreply.github.com
+    name = JaiPi
+    email = 29052214+JaiPi@users.noreply.github.com
 [includeIf "gitdir://wsl.localhost/AlmaLinux-9/home/alma/repos/celfocus/*/"]
     path = //wsl.localhost/AlmaLinux-9/home/alma/repos/celfocus/.gitconfig
+[credential]
+    interactive = false

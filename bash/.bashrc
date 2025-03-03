@@ -38,3 +38,5 @@ fi
 # Install Ruby Gems to ~/gems
 export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
+
+complete -C /home/jaipi/.terraform.versions/terraform_1.10.4 terraform
