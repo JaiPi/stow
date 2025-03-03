@@ -1,3 +1,5 @@
 [user]
 	name = NB27771_celfocus
 	email = jaime.pignatelli@celfocus.com
+[credential]
+	helper = store
