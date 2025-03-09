@@ -1,0 +1,11 @@
+[aws]
+[aws.region_aliases]
+eu-west-1 = "euw1"
+eu-central-1 = "euc1"
+
+[kubernetes]
+format = '[$symbol$context \($namespace\)]($style) '
+disabled = false
+contexts = [
+  { context_pattern = "arn:aws:eks:eu-central-1:445137467319:cluster/main-gha-runner", style = "blue", context_alias = "main-gha-runner" },
+]
