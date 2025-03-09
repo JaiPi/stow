@@ -6,6 +6,7 @@ if [[ -d "$HOME/.zshrc.d" ]]; then
 fi
 unset rc
 
+eval "$(starship init zsh)"
 
 # Lines configured by zsh-newuser-install
 setopt nomatch notify
