@@ -23,7 +23,7 @@ for cmd in "${CLI_TOOLS[@]}"; do
     fi
 done
 
-# Source Terraform completion
-if command -v terraform &>/dev/null; then
-    complete -o nospace -C "$(command -v terraform)" terraform
-fi
+# # Source Terraform completion
+# if command -v terraform &>/dev/null; then
+#     complete -o nospace -C "$(command -v terraform)" terraform
+# fi
