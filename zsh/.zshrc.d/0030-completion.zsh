@@ -1,16 +1,29 @@
-autoload -Uz compinit && compinit -C  # Faster startup
-autoload -Uz bashcompinit && bashcompinit  # Enable Bash-style completion
+# ========================
+# Zsh Completion Setup
+# ========================
 
-# Load completions
-if command -v kubectl &>/dev/null; then
-    source <(kubectl completion zsh)
-fi
-if command -v minikube &>/dev/null; then
-    source <(minikube completion zsh)
-fi
-if command -v helm &>/dev/null; then
-    source <(helm completion zsh)
-fi
-if command -v terraform-docs &>/dev/null; then
-    source <(terraform-docs completion zsh)
+# Load Zsh completion system (faster startup with caching)
+autoload -Uz compinit && compinit -C
+
+# Enable Bash-style completion 
+autoload -Uz bashcompinit && bashcompinit
+
+# Define CLI tools that support Zsh completion
+CLI_TOOLS=(
+    kubectl
+    minikube
+    helm
+    terraform-docs
+)
+
+# Dynamically load completions for available tools
+for cmd in "${CLI_TOOLS[@]}"; do
+    if command -v "$cmd" &>/dev/null; then
+        source <("$cmd" completion zsh)
+    fi
+done
+
+# Source Terraform completion
+if command -v terraform &>/dev/null; then
+    complete -o nospace -C "$(command -v terraform)" terraform
 fi

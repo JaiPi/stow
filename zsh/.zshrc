@@ -1,7 +1,13 @@
-# Load configuration files from ~/.zshrc.d/
-if [[ -d "$HOME/.zshrc.d" ]]; then
-    for rc in "$HOME/.zshrc.d/"*.zsh; do
-        [[ -f "$rc" ]] && source "$rc"
+# ========================
+# Load Configuration Files from ~/.zshrc.d/
+# ========================
+
+CONFIG_DIR="$HOME/.zshrc.d"
+
+if [[ -d "$CONFIG_DIR" ]]; then
+    for rc in "$CONFIG_DIR"/*.zsh; do
+        [[ -r "$rc" ]] && source "$rc"
     done
 fi
-unset rc
+
+unset rc CONFIG_DIR  # Clean up variables after use

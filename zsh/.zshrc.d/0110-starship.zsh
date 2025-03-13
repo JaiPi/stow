@@ -1,3 +1,8 @@
-# Load starship prompt configuration if /usr/local/bin/starship exists
-[[ -x /usr/local/bin/starship ]] &&
-eval "$(starship init zsh)"
+# ========================
+# Starship Prompt Setup
+# ========================
+
+# Load Starship if installed
+if command -v starship &>/dev/null; then
+    eval "$(starship init zsh)"
+fi
