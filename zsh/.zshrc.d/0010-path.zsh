@@ -1,5 +1,5 @@
 # Ensure custom user paths are included
-typeset -U PATH  # Avoid duplicate entries
+typeset -U PATH
 [[ -d "$HOME/bin" ]] && PATH="$HOME/bin:$PATH"
 [[ -d "$HOME/.local/bin" ]] && PATH="$HOME/.local/bin:$PATH"
 
