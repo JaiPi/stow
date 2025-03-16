@@ -23,10 +23,10 @@ zstyle ':completion:*' matcher-list \
 # ========================
 
 # Show a preview when using `cd`
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color=auto --group-directories-first $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -A --color=auto --group-directories-first $realpath'
 
 # Better ls preview in fzf-tab
-zstyle ':fzf-tab:complete:ls:*' fzf-preview 'ls --color=auto  --group-directories-first $realpath'
+zstyle ':fzf-tab:complete:ls:*' fzf-preview 'ls -A --color=auto  --group-directories-first $realpath'
 
 # ========================
 # Oh-My-Zsh Plugin: Alias Finder
