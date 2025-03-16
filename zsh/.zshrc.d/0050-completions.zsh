@@ -23,6 +23,11 @@ for cmd in "${CLI_TOOLS[@]}"; do
     fi
 done
 
+# Load Starship completions
+if command -v starship &>/dev/null; then
+    source <(starship completions zsh)
+fi
+
 # # Source Terraform completion
 # if command -v terraform &>/dev/null; then
 #     complete -o nospace -C "$(command -v terraform)" terraform
