@@ -86,15 +86,13 @@ $container\
 $shell\
 $character"""
 
-[aws]
-disabled = false
 [aws.region_aliases]
 eu-west-1 = "euw1"
 eu-central-1 = "euc1"
 
 [battery]
-charging_symbol = '⚡️ '
-discharging_symbol = '💀 '
+charging_symbol = "⚡"
+discharging_symbol = "💀"
 [[battery.display]]
 threshold = 30
 style = 'bold yellow'
