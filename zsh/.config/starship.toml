@@ -86,6 +86,9 @@ $container\
 $shell\
 $character"""
 
+[aws]
+disabled = true
+
 [aws.region_aliases]
 eu-west-1 = "euw1"
 eu-central-1 = "euc1"
@@ -102,6 +105,9 @@ style = 'bold red'
 
 [character]
 error_symbol = '[✗](bold red) '
+
+[gcloud]
+disabled = true
 
 [kubernetes]
 contexts = [
