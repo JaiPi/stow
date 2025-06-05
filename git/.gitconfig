@@ -3,6 +3,21 @@
 [user]
     name = JaiPi
     email = 29052214+JaiPi@users.noreply.github.com
-[includeIf "gitdir://wsl.localhost/AlmaLinux-9/home/alma/repos/celfocus/*/"]
-    path = //wsl.localhost/AlmaLinux-9/home/alma/repos/celfocus/.gitconfig
-
+    signingkey = ~/.ssh/JaiPi.pub
+[credential]
+    # helper = store
+    interactive = false
+[commit]
+    gpgsign = true
+[gpg]
+    format = ssh
+[gpg.ssh]
+    allowedSignersFile = ~/.ssh/allowed_signers
+[tag]
+	gpgsign = true
+[includeIf "gitdir://wsl.localhost/Debian/home/jaipi/repos/celfocus/*/"]
+    path = //wsl.localhost/Debian/home/jaipi/repos/celfocus/.gitconfig
+[includeIf "gitdir://wsl.localhost/Debian/home/jaipi/repos/zap/*/"]
+    path = //wsl.localhost/Debian/home/jaipi/repos/zap/.gitconfig
+[includeIf "gitdir://wsl.localhost/Debian/home/jaipi/repos/nos/*/"]
+    path = //wsl.localhost/Debian/home/jaipi/repos/nos/.gitconfig
