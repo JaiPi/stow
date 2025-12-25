@@ -113,7 +113,7 @@ disabled = true
 contexts = [
   { context_pattern = "arn:aws:eks:eu-central-1:445137467319:cluster/main-gha-runner", style = "blue", context_alias = "main-gha-runner" },
 ]
-disabled = false
+disabled = true
 
 [memory_usage]
 format = 'via $symbol [${ram_pct}( | ${ram})]($style) '
