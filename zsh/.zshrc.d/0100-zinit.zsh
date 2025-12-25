@@ -35,7 +35,8 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit ice wait lucid
 zinit light zsh-users/zsh-completions
 
-zinit ice wait lucid
+zinit ice lucid
+# zinit ice wait lucid
 zinit light zsh-users/zsh-autosuggestions
 
 zinit ice wait lucid
