@@ -36,3 +36,13 @@ zstyle ':fzf-tab:complete:ls:*' fzf-preview 'ls -A --color=auto  --group-directo
 zstyle ':omz:plugins:alias-finder' autoload yes  # Load automatically
 zstyle ':omz:plugins:alias-finder' exact yes     # Match exact aliases
 zstyle ':omz:plugins:alias-finder' cheaper yes   # Reduce performance impact
+
+# ========================
+# Oh-My-Zsh Plugin: NVM
+# ========================
+
+# Lazy load nvm for faster shell startup
+zstyle ':omz:plugins:nvm' lazy yes
+# Autoload node version from .nvmrc when entering directories
+zstyle ':omz:plugins:nvm' autoload yes
+zstyle ':omz:plugins:nvm' silent-autoload yes

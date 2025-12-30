@@ -32,3 +32,6 @@ fi
 # if command -v terraform &>/dev/null; then
 #     complete -o nospace -C "$(command -v terraform)" terraform
 # fi
+
+# Load NVM bash completion
+[ -s "${NVM_DIR:-$HOME/.nvm}/bash_completion" ] && \. "${NVM_DIR:-$HOME/.nvm}/bash_completion"

@@ -44,3 +44,4 @@ zinit light Aloxaf/fzf-tab  # Improves tab completion
 
 # Load useful Oh-My-Zsh plugin snippets
 zinit snippet OMZP::alias-finder
+zinit snippet OMZP::nvm
