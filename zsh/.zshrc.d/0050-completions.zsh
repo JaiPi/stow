@@ -28,6 +28,11 @@ if command -v starship &>/dev/null; then
     source <(starship completions zsh)
 fi
 
+# Load uv completions
+if command -v uv &>/dev/null; then
+    eval "$(uv generate-shell-completion zsh)"
+fi
+
 # # Source Terraform completion
 # if command -v terraform &>/dev/null; then
 #     complete -o nospace -C "$(command -v terraform)" terraform
