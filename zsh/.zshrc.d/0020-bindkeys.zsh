@@ -15,8 +15,8 @@ bindkey '^K' kill-line            # Ctrl+K: Delete everything after cursor
 bindkey '^W' backward-kill-word   # Ctrl+W: Delete last word
 
 # Move Cursor by Words (Alt + ←/→) - Covers multiple terminal types
-bindkey '^[[1;3D' backward-word  
-bindkey '^[[1;3C' forward-word
+bindkey '^[[1;5D' backward-word  
+bindkey '^[[1;5C' forward-word
 
 # Esc Clears the Current Line
 bindkey '\e' kill-whole-line
