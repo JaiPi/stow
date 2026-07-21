@@ -1,0 +1,3 @@
+# Only track starship.toml out of the live ~/.config directory
+zsh/.config/*
+!zsh/.config/starship.toml
