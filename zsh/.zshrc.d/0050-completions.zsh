@@ -2,41 +2,68 @@
 # Zsh Completion Setup
 # ========================
 
-# Load Zsh completion system (faster startup with caching)
-autoload -Uz compinit && compinit -C
+# Cache directory for tool-generated completion functions, added to fpath so
+# compinit can pick them up. This avoids spawning a subprocess per tool on
+# every shell startup (the old `source <(tool completion zsh)` pattern).
+ZSH_COMPCACHE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/completions"
+[[ -d "$ZSH_COMPCACHE" ]] || mkdir -p "$ZSH_COMPCACHE"
+fpath=("$ZSH_COMPCACHE" $fpath)
 
-# Enable Bash-style completion 
-autoload -Uz bashcompinit && bashcompinit
+# zsh-completions is cloned/updated by zinit (0100) with `blockf` so it does not
+# touch fpath itself; register its completion dir here, before compinit runs, so
+# the extra `_*` functions are actually picked up. (Present from the 2nd shell
+# after a fresh install, once zinit has cloned it.)
+_zc_dir="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/plugins/zsh-users---zsh-completions/src"
+[[ -d "$_zc_dir" ]] && fpath=("$_zc_dir" $fpath)
+unset _zc_dir
 
-# Define CLI tools that support Zsh completion
-CLI_TOOLS=(
-    kubectl
-    minikube
-    helm
-    terraform-docs
+# Map: tool -> subcommand that prints a zsh completion script to stdout.
+typeset -A COMP_GENERATORS=(
+    kubectl        "kubectl completion zsh"
+    minikube       "minikube completion zsh"
+    helm           "helm completion zsh"
+    terraform-docs "terraform-docs completion zsh"
+    starship       "starship completions zsh"
+    uv             "uv generate-shell-completion zsh"
 )
 
-# Dynamically load completions for available tools
-for cmd in "${CLI_TOOLS[@]}"; do
-    if command -v "$cmd" &>/dev/null; then
-        source <("$cmd" completion zsh)
+# (Re)generate a cache file when it is missing/empty or older than the tool
+# binary (so upgrades refresh completions). Track whether anything changed so
+# compinit can do a full rebuild instead of using the cached dump.
+_comp_regenerated=0
+for tool gen in ${(kv)COMP_GENERATORS}; do
+    cmd=${gen%% *}
+    command -v "$cmd" &>/dev/null || continue
+    cache_file="$ZSH_COMPCACHE/_$tool"
+    if [[ ! -s "$cache_file" || "$commands[$cmd]" -nt "$cache_file" ]]; then
+        if eval "$gen" > "$cache_file" 2>/dev/null; then
+            _comp_regenerated=1
+        else
+            rm -f "$cache_file"
+        fi
     fi
 done
+unset tool gen cmd cache_file COMP_GENERATORS
 
-# Load Starship completions
-if command -v starship &>/dev/null; then
-    source <(starship completions zsh)
+# Load Zsh completion system. Rebuild the dump when it is missing, stale
+# (>24h), or a completion file was just regenerated; otherwise use the fast
+# cached path (`-C` skips the security/freshness scan).
+autoload -Uz compinit
+_zdump="${ZDOTDIR:-$HOME}/.zcompdump"
+_comp_full=1
+if [[ -f "$_zdump" && $_comp_regenerated -eq 0 ]]; then
+    _comp_full=0
+    for _f in ${_zdump}(Nmh+24); do _comp_full=1; done
 fi
-
-# Load uv completions
-if command -v uv &>/dev/null; then
-    eval "$(uv generate-shell-completion zsh)"
+if (( _comp_full )); then
+    compinit -d "$_zdump"
+else
+    compinit -C -d "$_zdump"
 fi
+unset _zdump _comp_full _comp_regenerated _f
 
-# # Source Terraform completion
-# if command -v terraform &>/dev/null; then
-#     complete -o nospace -C "$(command -v terraform)" terraform
-# fi
+# Enable Bash-style completion (some tools ship bash completions only)
+autoload -Uz bashcompinit && bashcompinit
 
-# Load NVM bash completion
-[ -s "${NVM_DIR:-$HOME/.nvm}/bash_completion" ] && \. "${NVM_DIR:-$HOME/.nvm}/bash_completion"
+# NOTE: nvm is handled by the OMZP::nvm plugin (see 0100-zinit.zsh / 0110-zstyle.zsh),
+# which lazy-loads nvm and its bash_completion on first use. No manual sourcing here.

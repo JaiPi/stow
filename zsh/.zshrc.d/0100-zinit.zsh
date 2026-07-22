@@ -28,19 +28,27 @@ autoload -Uz _zinit
 # Zsh Plugins with Zinit
 # ========================
 
-# Optimize plugin loading with `zinit ice`
-zinit ice wait lucid
-zinit light zsh-users/zsh-syntax-highlighting
+# All plugins load via turbo mode (`wait lucid`) after the first prompt, in the
+# order declared. Order matters: syntax-highlighting must be sourced LAST so it
+# wraps every other widget correctly.
 
-zinit ice wait lucid
-zinit light zsh-users/zsh-completions
-
-zinit ice lucid
-# zinit ice wait lucid
+# Autosuggestions — under turbo, needs an explicit start since precmd already ran
+zinit ice wait lucid atload'_zsh_autosuggest_start'
 zinit light zsh-users/zsh-autosuggestions
 
+# Extra completion definitions — `blockf` stops the plugin from touching fpath;
+# its dir is registered pre-compinit in 0050-completions.zsh instead.
+zinit ice wait lucid blockf
+zinit light zsh-users/zsh-completions
+
+# fzf-tab — replaces the completion menu with an fzf picker
 zinit ice wait lucid
-zinit light Aloxaf/fzf-tab  # Improves tab completion
+zinit light Aloxaf/fzf-tab
+
+# Syntax highlighting — MUST be last. (Swap to zdharma-continuum/fast-syntax-highlighting
+# for a faster drop-in if desired.)
+zinit ice wait lucid
+zinit light zsh-users/zsh-syntax-highlighting
 
 # Load useful Oh-My-Zsh plugin snippets
 zinit snippet OMZP::alias-finder

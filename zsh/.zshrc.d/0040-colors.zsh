@@ -36,6 +36,3 @@ export GREP_COLORS='mt=1;37;41'  # Bold white text on red background for matches
 
 # Enable better syntax highlighting for `bat`
 export BAT_THEME="Dracula"
-
-# Fix terminal output compatibility for colors
-export TERM="xterm-256color"

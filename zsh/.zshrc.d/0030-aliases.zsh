@@ -41,4 +41,3 @@ alias tfd='terraform-docs .'
 # Miscellaneous
 alias cl='clear'
 alias hg='history | grep '
-alias eza='exa --icons --group-directories-first'  # Alternative to ls if exa is installed
