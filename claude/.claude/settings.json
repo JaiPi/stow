@@ -6,5 +6,5 @@
     ]
   },
   "tui": "fullscreen",
-  "model": "opus"
+  "remoteControlAtStartup": true
 }
