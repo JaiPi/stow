@@ -2,7 +2,7 @@
 # Zsh History Settings
 # ========================
 
-HISTSIZE=10000               # Number of commands in memory
+HISTSIZE=100000              # Number of commands in memory
 SAVEHIST=$HISTSIZE           # Number of commands stored in history file
 HISTFILE="$HOME/.zsh_history" # History file location
 HISTDUP=erase                # Remove duplicates

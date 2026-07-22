@@ -9,13 +9,9 @@ ZSH_COMPCACHE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/completions"
 [[ -d "$ZSH_COMPCACHE" ]] || mkdir -p "$ZSH_COMPCACHE"
 fpath=("$ZSH_COMPCACHE" $fpath)
 
-# zsh-completions is cloned/updated by zinit (0100) with `blockf` so it does not
-# touch fpath itself; register its completion dir here, before compinit runs, so
-# the extra `_*` functions are actually picked up. (Present from the 2nd shell
-# after a fresh install, once zinit has cloned it.)
-_zc_dir="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/plugins/zsh-users---zsh-completions/src"
-[[ -d "$_zc_dir" ]] && fpath=("$_zc_dir" $fpath)
-unset _zc_dir
+# NOTE: zsh-completions is loaded synchronously in 0045-zinit.zsh, which adds its
+# `src/` dir to fpath *before* this file runs — so compinit below picks it up
+# with no manual registration needed.
 
 # Map: tool -> subcommand that prints a zsh completion script to stdout.
 typeset -A COMP_GENERATORS=(
@@ -65,5 +61,9 @@ unset _zdump _comp_full _comp_regenerated _f
 # Enable Bash-style completion (some tools ship bash completions only)
 autoload -Uz bashcompinit && bashcompinit
 
-# NOTE: nvm is handled by the OMZP::nvm plugin (see 0100-zinit.zsh / 0110-zstyle.zsh),
+# Register zinit's own completion (needs the `_comps` table that compinit just built)
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# NOTE: nvm is handled by the OMZP::nvm plugin (see 0045-zinit.zsh / 0110-zstyle.zsh),
 # which lazy-loads nvm and its bash_completion on first use. No manual sourcing here.
