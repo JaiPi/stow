@@ -1,3 +1,15 @@
 # Only track starship.toml out of the live ~/.config directory
 zsh/.config/*
 !zsh/.config/starship.toml
+
+# Claude Code user config: allowlist user-authored config only.
+# Runtime state, caches, and secrets (settings.local.json, .credentials.json,
+# projects/, history.jsonl, ...) must never be committed, even if they end up
+# inside the package by accident.
+claude/.claude/*
+!claude/.claude/settings.json
+!claude/.claude/keybindings.json
+!claude/.claude/CLAUDE.md
+!claude/.claude/agents/
+!claude/.claude/commands/
+!claude/.claude/skills/
