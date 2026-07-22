@@ -56,10 +56,15 @@ if (( _comp_full )); then
 else
     compinit -C -d "$_zdump"
 fi
+
+# Wordcode-compile the dump for faster reads on subsequent startups
+if [[ -s "$_zdump" && ( ! -s "${_zdump}.zwc" || "$_zdump" -nt "${_zdump}.zwc" ) ]]; then
+    zcompile "$_zdump" 2>/dev/null
+fi
 unset _zdump _comp_full _comp_regenerated _f
 
-# Enable Bash-style completion (some tools ship bash completions only)
-autoload -Uz bashcompinit && bashcompinit
+# NOTE: no bashcompinit here — the only consumer (nvm's bash_completion) is
+# loaded by OMZP::nvm, which runs bashcompinit itself when needed.
 
 # Register zinit's own completion (needs the `_comps` table that compinit just built)
 autoload -Uz _zinit

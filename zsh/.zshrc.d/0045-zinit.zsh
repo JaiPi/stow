@@ -58,6 +58,9 @@ bindkey "^[OA" history-substring-search-up
 bindkey "^[OB" history-substring-search-down'
 zinit light zsh-users/zsh-history-substring-search
 
-# Load useful Oh-My-Zsh plugin snippets
+# Load useful Oh-My-Zsh plugin snippets (deferred — their zstyle config is set
+# in 0044-zstyle.zsh, which must already have run by load time)
+zinit ice wait lucid
 zinit snippet OMZP::alias-finder
+zinit ice wait lucid
 zinit snippet OMZP::nvm

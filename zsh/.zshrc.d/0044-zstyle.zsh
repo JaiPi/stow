@@ -1,6 +1,9 @@
 # ========================
 # Zsh Completion Enhancements
 # ========================
+# MUST run before 0045-zinit.zsh: plugins (notably OMZP::nvm) read these
+# zstyles at load time — if set later, e.g. nvm's lazy-load is silently
+# ignored and nvm loads eagerly (~700ms per shell).
 
 # Disable the completion menu (only show when pressing Tab twice)
 zstyle ':completion:*' menu no

@@ -29,7 +29,7 @@ There is no build, lint, or test suite — this is configuration, not code. The 
 Both shells use a numbered drop-in directory sourced from the main rc file, so load order is controlled by filename prefix:
 
 - Environment/PATH is set outside the drop-ins: `zsh/.zshenv` (deduped PATH, sourced by *every* zsh incl. scripts) and `zsh/.zprofile` (Nix + `XDG_DATA_DIRS`, login shells only). Keep `.zshenv` minimal and side-effect-free.
-- `zsh/.zshrc` sources every `~/.zshrc.d/*.zsh` in order: `0020-bindkeys` → `0030-aliases` → `0040-colors` → `0045-zinit` (plugin manager) → `0050-completions` → `0060-history` → `0070-shell` → `0080-terminal` → `0110-zstyle` → `0120-starship` (prompt) → `0130-fzf`.
+- `zsh/.zshrc` sources every `~/.zshrc.d/*.zsh` in order: `0020-bindkeys` → `0030-aliases` → `0040-colors` → `0044-zstyle` → `0045-zinit` (plugin manager) → `0050-completions` → `0060-history` → `0070-shell` → `0080-terminal` → `0120-starship` (prompt) → `0130-fzf`. `0044-zstyle` must stay before `0045-zinit`: plugins read their `zstyle` config at load time (OMZP::nvm's lazy-load in particular — set late, nvm loads eagerly and costs ~700ms per shell).
 - `bash/.bashrc` sources every `~/.bashrc.d/*.bashrc` similarly.
 
 When adding new shell config, drop a new numbered file into the appropriate `.zshrc.d`/`.bashrc.d` rather than editing the monolithic rc file — the prefix number determines when it runs relative to plugin manager init and prompt init. (`0045-zinit` deliberately precedes `0050-completions` so completion-providing plugins are on `fpath` before `compinit` runs.)

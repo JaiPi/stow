@@ -4,11 +4,11 @@
 
 autoload -Uz colors && colors  # Enable color support
 
-# Enable better ls colors (if dircolors is available)
+# Enable better ls colors (if GNU coreutils' dircolors is available)
 if command -v dircolors &>/dev/null; then
-    eval "$(dircolors -b ~/.dircolors 2>/dev/null || dircolors -b)"
-
-    # Custom LS_COLORS (Better visibility)
+    # Custom LS_COLORS (Better visibility). Fully defines the palette, so the
+    # old `eval "$(dircolors -b)"` subprocess was dead work — its output was
+    # overwritten by this line anyway.
     export LS_COLORS="di=1;34:ln=36:so=1;35:pi=33:ex=1;32:bd=1;33;44:cd=1;33;44:su=1;37;41:sg=1;30;43:tw=1;30;42:ow=1;30;45:"
 
     # Enable colored output for common commands
