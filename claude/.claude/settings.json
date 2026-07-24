@@ -6,5 +6,7 @@
     ]
   },
   "tui": "fullscreen",
-  "remoteControlAtStartup": true
+  "remoteControlAtStartup": true,
+  "agentPushNotifEnabled": true,
+  "inputNeededNotifEnabled": true
 }
