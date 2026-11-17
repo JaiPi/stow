@@ -15,10 +15,8 @@
     allowedSignersFile = ~/.ssh/allowed_signers
 [tag]
 	gpgsign = true
-[includeIf "gitdir://wsl.localhost/Debian/home/jaipi/repos/zap/*/"]
-    path = //wsl.localhost/Debian/home/jaipi/repos/zap/.gitconfig
-[includeIf "gitdir://wsl.localhost/Debian/home/jaipi/repos/nos/*/"]
-    path = //wsl.localhost/Debian/home/jaipi/repos/nos/.gitconfig
+[includeIf "gitdir:~/repos/nos/*/"]
+	path = ~/workspace/clients/nos/nos.gitconfig
 [core]
 	autocrlf = input
 	eol = lf
