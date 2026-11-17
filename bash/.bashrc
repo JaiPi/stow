@@ -40,3 +40,6 @@ export GEM_HOME="$HOME/gems"
 export PATH="$HOME/gems/bin:$PATH"
 
 complete -C /home/jaipi/.terraform.versions/terraform_1.10.4 terraform
+
+# User-local binaries (pipx, installers). zsh gets this from .zshenv instead.
+export PATH="$HOME/.local/bin:$PATH"

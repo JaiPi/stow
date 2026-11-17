@@ -21,3 +21,6 @@ fi
 
 # User specific environment and startup programs
 #export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# User-local binaries (pipx, installers). zsh gets this from .zshenv instead.
+export PATH="$HOME/.local/bin:$PATH"
