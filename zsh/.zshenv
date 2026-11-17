@@ -25,3 +25,7 @@ if [[ -d "$HOME/.nvm/versions/node" ]]; then
 fi
 
 export PATH
+
+# Machine-local secrets (API tokens etc). Untracked on purpose — this repo is
+# public. Guarded so a machine without the file still starts a working shell.
+[[ -r "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"
