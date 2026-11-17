@@ -2,20 +2,14 @@
 zsh/.config/*
 !zsh/.config/starship.toml
 
-# Claude Code user config: allowlist user-authored config only.
+# Claude Code user config: only portable, public-safe settings. CLAUDE.md, agents and skills
+# that mention clients live in the private workspace repo instead.
 # Runtime state, caches, and secrets (settings.local.json, .credentials.json,
 # projects/, history.jsonl, ...) must never be committed, even if they end up
 # inside the package by accident.
 claude/.claude/*
 !claude/.claude/settings.json
 !claude/.claude/keybindings.json
-!claude/.claude/CLAUDE.md
-!claude/.claude/agents/
-!claude/.claude/commands/
-!claude/.claude/skills/
-# Claude Code's local copy of skills synced from claude.ai: managed by Claude Code, and it
-# includes private skills. Never commit it (this repo is public).
-claude/.claude/skills/synced/
 
 # Only the ssh config is tracked. Keys must never end up here (this repo is public).
 ssh/.ssh/*

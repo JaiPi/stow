@@ -52,9 +52,11 @@ Commit signing is enabled by default (`commit.gpgsign = true`, `gpg.format = ssh
 
 `aws/aws-credentials/*.sh` and `aws/awslogin/*.sh` are STS helper scripts that exchange an MFA token code for temporary credentials (`aws sts get-session-token`, optionally followed by `aws sts assume-role`) and write them into named AWS CLI profiles via `aws configure set`. `aws/awslogin/login-aws` and `aws/aws-credentials/aws-mfa-arns` are lookup tables mapping profile/account names to their MFA device ARNs — scripts `awk`/`grep` these files by profile name rather than hardcoding ARNs inline. These print credentials to stdout (by design, for the interactive workflow); treat any output from running them as sensitive.
 
-### `claude/.claude/agents`
+### `claude/.claude`
 
-Custom Claude Code subagent definitions, stowed to `~/.claude/agents/` so they're available globally across projects.
+Only `settings.json` is stowed, to `~/.claude/settings.json`, so the same Claude Code settings apply on every machine. Claude Code rewrites it when settings change, so it shows up in `git status`. Review the diff and commit what should travel.
+
+Nothing else from `~/.claude` belongs here: this repo is public. The user-level `CLAUDE.md` lives in the private workspace repo (`~/.claude/CLAUDE.md` links to `~/workspace/claude-user.md`), and so do any agents or skills that mention clients. `~/.claude/skills` is a real folder, holding Claude Code's synced-skills cache.
 
 ## Working in this repo — gotchas
 
