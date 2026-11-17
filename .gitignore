@@ -13,3 +13,6 @@ claude/.claude/*
 !claude/.claude/agents/
 !claude/.claude/commands/
 !claude/.claude/skills/
+# Claude Code's local copy of skills synced from claude.ai: managed by Claude Code, and it
+# includes private skills. Never commit it (this repo is public).
+claude/.claude/skills/synced/
