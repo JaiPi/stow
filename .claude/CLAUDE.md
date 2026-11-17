@@ -10,7 +10,9 @@ Packages: `aws`, `bash`, `claude`, `git`, `ssh`, `tfswitch`, `tmux`, `zsh`.
 
 ## Commands
 
-Run from the repo root (`~/stow`), targeting `$HOME`:
+Run from the repo root (`~/repos/jaipi/stow`), targeting `$HOME`. The repo's `.stowrc` sets
+`--target=~`, because stow's default target is the stow dir's parent (`~/repos/jaipi`). From any
+other directory, pass `-d ~/repos/jaipi/stow -t ~` explicitly:
 
 ```bash
 stow <package>              # symlink a package into $HOME
